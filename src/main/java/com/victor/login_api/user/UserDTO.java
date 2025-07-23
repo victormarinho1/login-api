@@ -1,8 +1,9 @@
 package com.victor.login_api.user;
 
-import com.victor.login_api.core.Role;
+import com.victor.login_api.role.Role;
+import com.victor.login_api.role.RoleDTO;
 
-import java.util.List;
+import java.util.Set;
 
 public record UserDTO(
         Long id,
@@ -10,7 +11,7 @@ public record UserDTO(
         String lastname,
         String email,
         String password,
-        List<Role> role,
+        Set<RoleDTO> role,
         Boolean enabled
 ) {
 }

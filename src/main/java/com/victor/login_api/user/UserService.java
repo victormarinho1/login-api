@@ -1,6 +1,7 @@
 package com.victor.login_api.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,6 +18,9 @@ public class UserService {
     }
 
     public void create(UserDTO dto){
-        this.userRepository.save(new User(dto));
+        User user = new User(dto);
+        user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
+
+        this.userRepository.save(user);
     }
 }
